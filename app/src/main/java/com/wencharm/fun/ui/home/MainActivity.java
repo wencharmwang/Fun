@@ -1,4 +1,4 @@
-package ui.home;
+package com.wencharm.fun.ui.home;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
