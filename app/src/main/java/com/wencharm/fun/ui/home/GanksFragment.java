@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.wencharm.fun.R;
 import com.wencharm.fun.ui.BaseFragment;
 
 /**
@@ -13,6 +14,8 @@ import com.wencharm.fun.ui.BaseFragment;
  */
 
 public class GanksFragment extends BaseFragment implements GanksContract.IView {
+
+	public static final String TAG = "GanksFragment";
 
 	private GanksContract.IPresenter presenter;
 
@@ -25,7 +28,7 @@ public class GanksFragment extends BaseFragment implements GanksContract.IView {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		super.onCreateView(inflater, container, savedInstanceState);
-
+		return inflater.inflate(R.layout.home_ganks, container, false);
 	}
 
 	@Override
