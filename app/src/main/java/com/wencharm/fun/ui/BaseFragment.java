@@ -10,6 +10,10 @@ import android.support.v4.app.Fragment;
 
 public class BaseFragment extends Fragment {
 
+	public BaseActivity activity() {
+		return (BaseActivity) this.getContext();
+	}
+
 	@Override
 	public void onCreate(@Nullable Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

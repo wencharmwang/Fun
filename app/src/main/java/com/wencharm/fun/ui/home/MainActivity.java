@@ -21,11 +21,20 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
 	public static final String TAG = "MainActivity";
 
-	@BindView(R.id.toolbar) Toolbar toolbar;
-	@BindView(R.id.drawer_layout) DrawerLayout drawer;
-	@BindView(R.id.nav_view) NavigationView navigationView;
-	@BindView(R.id.fab) FloatingActionButton fab;
-	@BindView(R.id.content) FrameLayout content;
+	@BindView(R.id.toolbar)
+	Toolbar toolbar;
+
+	@BindView(R.id.drawer_layout)
+	DrawerLayout drawer;
+
+	@BindView(R.id.nav_view)
+	NavigationView navigationView;
+
+	@BindView(R.id.fab)
+	FloatingActionButton fab;
+
+	@BindView(R.id.content)
+	FrameLayout content;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

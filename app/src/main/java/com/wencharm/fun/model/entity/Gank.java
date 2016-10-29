@@ -12,7 +12,7 @@ public class Gank {
 
 	public List<GankInfo> results;
 
-	public class GankInfo {
+	public static class GankInfo {
 
 		public String _id;
 

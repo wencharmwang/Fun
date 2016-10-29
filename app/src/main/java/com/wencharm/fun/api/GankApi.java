@@ -29,6 +29,6 @@ public class GankApi extends BaseApi {
 	}
 
 	public Observable<Gank> ganks() {
-		return service.getGanks("all", 10, 1);
+		return service.getGanks("福利", 10, 1);
 	}
 }

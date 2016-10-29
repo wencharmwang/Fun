@@ -22,4 +22,8 @@ public class Image {
 	public void load(SimpleDraweeView imageView, Uri uri) {
 		imageView.setImageURI(uri);
 	}
+
+	public void load(SimpleDraweeView imageView, String url) {
+		imageView.setImageURI(url);
+	}
 }
