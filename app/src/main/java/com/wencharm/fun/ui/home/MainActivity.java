@@ -47,7 +47,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 		drawer.addDrawerListener(toggle);
 		toggle.syncState();
 		navigationView.setNavigationItemSelectedListener(this);
-		onNavigationItemSelected(navigationView.getMenu().getItem(0));
+		getSupportFragmentManager().beginTransaction().add(R.id.content, new GanksFragment()).addToBackStack(GanksFragment.TAG).commit();
 		navigationView.getMenu().getItem(0).setChecked(true);
 	}
 
@@ -56,18 +56,18 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 		DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 		if (drawer.isDrawerOpen(GravityCompat.START)) {
 			drawer.closeDrawer(GravityCompat.START);
-		} else {
-			super.onBackPressed();
-		}
+		} else if (getSupportFragmentManager().findFragmentById(R.id.content) instanceof GanksFragment) {
+			Snackbar.make(fab, "Are you sure to close app?", Snackbar.LENGTH_LONG).setAction("Action", v -> finish()).show();
+		} else super.onBackPressed();
 	}
 
 	@Override
 	public boolean onNavigationItemSelected(MenuItem item) {
 		// Handle navigation view item clicks here.
 		int id = item.getItemId();
-
 		if (id == R.id.nav_home) {
-			getSupportFragmentManager().beginTransaction().replace(R.id.content, new GanksFragment()).addToBackStack(GanksFragment.TAG).commit();
+			if (getSupportFragmentManager().findFragmentById(R.id.content) instanceof GanksFragment) ;
+			else getSupportFragmentManager().beginTransaction().replace(R.id.content, new GanksFragment()).addToBackStack(GanksFragment.TAG).commit();
 		} else if (id == R.id.nav_gallery) {
 
 		} else if (id == R.id.nav_manage) {
@@ -75,7 +75,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 		} else if (id == R.id.nav_share) {
 
 		}
-
+		item.setChecked(true);
 		drawer.closeDrawer(GravityCompat.START);
 		return true;
 	}
