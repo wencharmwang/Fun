@@ -57,7 +57,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 		if (drawer.isDrawerOpen(GravityCompat.START)) {
 			drawer.closeDrawer(GravityCompat.START);
 		} else if (getSupportFragmentManager().findFragmentById(R.id.content) instanceof GanksFragment) {
-			Snackbar.make(fab, "Are you sure to close app?", Snackbar.LENGTH_LONG).setAction("Action", v -> finish()).show();
+			finish();
 		} else super.onBackPressed();
 	}
 
