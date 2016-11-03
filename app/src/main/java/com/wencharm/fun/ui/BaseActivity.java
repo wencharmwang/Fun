@@ -23,6 +23,14 @@ public class BaseActivity extends AppCompatActivity {
 		return inflater().inflate(res, parent, attachToRoot);
 	}
 
+	public String string(int resId) {
+		return getResources().getString(resId);
+	}
+
+	public int color(int resId) {
+		return getResources().getColor(resId);
+	}
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

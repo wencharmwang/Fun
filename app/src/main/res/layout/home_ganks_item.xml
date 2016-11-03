@@ -12,10 +12,10 @@
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/image"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="200dp"
         android:minHeight="100dp"
         android:layout_marginBottom="30dp"
-        fresco:actualImageScaleType="fitCenter"
+        fresco:actualImageScaleType="centerCrop"
         fresco:placeholderImage="@drawable/ic_menu_camera"/>
 
     <TextView
