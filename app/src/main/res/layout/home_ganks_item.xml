@@ -16,7 +16,7 @@
         android:minHeight="100dp"
         android:layout_marginBottom="30dp"
         fresco:actualImageScaleType="centerCrop"
-        fresco:placeholderImage="@drawable/ic_menu_camera"/>
+        fresco:placeholderImage="@drawable/ic_image_holder"/>
 
     <TextView
         android:id="@+id/provider"
