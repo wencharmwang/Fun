@@ -1,4 +1,4 @@
-package com.wencharm.fun.ui.home;
+package com.wencharm.fun.ui.main;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -13,6 +13,7 @@ import android.widget.FrameLayout;
 
 import com.wencharm.fun.R;
 import com.wencharm.fun.ui.BaseActivity;
+import com.wencharm.fun.ui.home.GanksFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
