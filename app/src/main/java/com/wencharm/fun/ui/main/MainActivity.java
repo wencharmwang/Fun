@@ -1,6 +1,7 @@
 package com.wencharm.fun.ui.main;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -48,7 +49,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 		drawer.addDrawerListener(toggle);
 		toggle.syncState();
 		navigationView.setNavigationItemSelectedListener(this);
-		getSupportFragmentManager().beginTransaction().add(R.id.content, new GanksFragment()).addToBackStack(GanksFragment.TAG).commit();
+		getSupportFragmentManager().beginTransaction().add(R.id.content, new GanksFragment()).commit();
 		navigationView.getMenu().getItem(0).setChecked(true);
 	}
 
@@ -57,18 +58,16 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 		DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 		if (drawer.isDrawerOpen(GravityCompat.START)) {
 			drawer.closeDrawer(GravityCompat.START);
-		} else if (getSupportFragmentManager().findFragmentById(R.id.content) instanceof GanksFragment) {
-			finish();
 		} else super.onBackPressed();
 	}
 
 	@Override
-	public boolean onNavigationItemSelected(MenuItem item) {
+	public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 		// Handle navigation view item clicks here.
 		int id = item.getItemId();
 		if (id == R.id.nav_home) {
 			if (getSupportFragmentManager().findFragmentById(R.id.content) instanceof GanksFragment) ;
-			else getSupportFragmentManager().beginTransaction().replace(R.id.content, new GanksFragment()).addToBackStack(GanksFragment.TAG).commit();
+			else getSupportFragmentManager().beginTransaction().replace(R.id.content, new GanksFragment()).commit();
 		} else if (id == R.id.nav_gallery) {
 
 		} else if (id == R.id.nav_manage) {
