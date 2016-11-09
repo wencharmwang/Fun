@@ -6,7 +6,6 @@ import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.transition.Fade;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -121,8 +120,8 @@ public class GanksFragment extends BaseFragment implements GanksContract.IView {
 				fragment.setSharedElementEnterTransition(new ProfileTransiton());
 				fragment.setSharedElementReturnTransition(new ProfileTransiton());
 				BaseFragment current = (BaseFragment) activity.getSupportFragmentManager().findFragmentById(R.id.content);
-				current.setEnterTransition(new Fade());
-				current.setExitTransition(new Fade());
+//				current.setEnterTransition(new Fade());
+//				current.setExitTransition(new Fade());
 				activity.getSupportFragmentManager()
 						.beginTransaction()
 						.replace(R.id.content, fragment)

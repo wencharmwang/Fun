@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.wencharm.fun.R;
+import com.wencharm.fun.app.App;
 import com.wencharm.fun.ui.BaseFragment;
 
 import butterknife.BindView;
@@ -41,8 +42,8 @@ public class ProfileFragment extends BaseFragment {
 		super.onCreateView(inflater, container, savedInstanceState);
 		View view = inflater.inflate(R.layout.profile, container, false);
 		ButterKnife.bind(this, view);
-		image.setImageDrawable(activity().getDrawable(R.drawable.ic_image_holder));
-//		App.image.load(image, url);
+//		image.setImageDrawable(activity().getDrawable(R.drawable.ic_image_holder));
+		App.image.load(image, url);
 		name.setText("Charming");
 		status.setText("To be a lazy cat");
 		return view;

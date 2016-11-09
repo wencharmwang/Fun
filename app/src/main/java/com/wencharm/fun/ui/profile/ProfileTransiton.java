@@ -2,7 +2,6 @@ package com.wencharm.fun.ui.profile;
 
 import android.content.Context;
 import android.transition.ChangeBounds;
-import android.transition.ChangeImageTransform;
 import android.transition.ChangeTransform;
 import android.transition.TransitionSet;
 import android.util.AttributeSet;
@@ -27,8 +26,6 @@ public class ProfileTransiton extends TransitionSet {
 
 	private void init() {
 		setOrdering(ORDERING_TOGETHER);
-		addTransition(new ChangeBounds()).
-				addTransition(new ChangeTransform()).
-				addTransition(new ChangeImageTransform());
+		addTransition(new ChangeBounds()).addTransition(new ChangeTransform());
 	}
 }
