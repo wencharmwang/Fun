@@ -1,4 +1,4 @@
-package com.wencharm.fun.ui;
+package com.wencharm.fun.presentation;
 
 /**
  * Created by Wencharm on 18/10/2016.

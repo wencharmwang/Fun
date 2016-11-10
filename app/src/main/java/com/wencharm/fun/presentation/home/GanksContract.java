@@ -1,8 +1,8 @@
-package com.wencharm.fun.ui.home;
+package com.wencharm.fun.presentation.home;
 
-import com.wencharm.fun.model.entity.Gank;
-import com.wencharm.fun.ui.BasePresenter;
-import com.wencharm.fun.ui.BaseView;
+import com.wencharm.fun.data.entity.Gank;
+import com.wencharm.fun.presentation.BasePresenter;
+import com.wencharm.fun.presentation.BaseView;
 
 import java.util.List;
 

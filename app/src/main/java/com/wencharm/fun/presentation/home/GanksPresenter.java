@@ -1,4 +1,4 @@
-package com.wencharm.fun.ui.home;
+package com.wencharm.fun.presentation.home;
 
 import com.wencharm.fun.app.App;
 

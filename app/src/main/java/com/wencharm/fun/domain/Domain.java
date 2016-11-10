@@ -1,4 +1,4 @@
-package com.wencharm.fun.api;
+package com.wencharm.fun.domain;
 
 /**
  * Created by Wencharm on 18/10/2016.

@@ -34,5 +34,4 @@
         android:textColor="#66000000"
         fresco:text="To be a lazy cate."/>
 
-
 </LinearLayout>

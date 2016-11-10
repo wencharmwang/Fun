@@ -1,4 +1,4 @@
-package com.wencharm.fun.ui.profile;
+package com.wencharm.fun.presentation.profile;
 
 import android.content.Context;
 import android.transition.ChangeBounds;

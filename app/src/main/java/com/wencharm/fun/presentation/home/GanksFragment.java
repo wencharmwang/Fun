@@ -1,4 +1,4 @@
-package com.wencharm.fun.ui.home;
+package com.wencharm.fun.presentation.home;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,12 +14,12 @@ import android.widget.TextView;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.wencharm.fun.R;
 import com.wencharm.fun.app.App;
-import com.wencharm.fun.model.entity.Gank;
-import com.wencharm.fun.ui.BaseActivity;
-import com.wencharm.fun.ui.BaseFragment;
-import com.wencharm.fun.ui.RecyclerAdapter;
-import com.wencharm.fun.ui.profile.ProfileFragment;
-import com.wencharm.fun.ui.profile.ProfileTransiton;
+import com.wencharm.fun.data.entity.Gank;
+import com.wencharm.fun.presentation.BaseActivity;
+import com.wencharm.fun.presentation.BaseFragment;
+import com.wencharm.fun.presentation.RecyclerAdapter;
+import com.wencharm.fun.presentation.profile.ProfileFragment;
+import com.wencharm.fun.presentation.profile.ProfileTransiton;
 
 import java.util.List;
 

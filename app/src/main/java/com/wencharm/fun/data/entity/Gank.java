@@ -1,4 +1,4 @@
-package com.wencharm.fun.model.entity;
+package com.wencharm.fun.data.entity;
 
 import java.util.List;
 

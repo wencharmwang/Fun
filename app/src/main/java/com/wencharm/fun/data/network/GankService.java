@@ -1,6 +1,6 @@
-package com.wencharm.fun.model.network;
+package com.wencharm.fun.data.network;
 
-import com.wencharm.fun.model.entity.Gank;
+import com.wencharm.fun.data.entity.Gank;
 
 import retrofit2.http.GET;
 import retrofit2.http.Path;

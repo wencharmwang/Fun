@@ -1,4 +1,4 @@
-package com.wencharm.fun.ui.profile;
+package com.wencharm.fun.presentation.profile;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,7 +9,7 @@ import android.widget.TextView;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.wencharm.fun.R;
 import com.wencharm.fun.app.App;
-import com.wencharm.fun.ui.BaseFragment;
+import com.wencharm.fun.presentation.BaseFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

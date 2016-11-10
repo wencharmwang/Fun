@@ -1,8 +1,8 @@
-package com.wencharm.fun.api;
+package com.wencharm.fun.domain;
 
 import com.wencharm.fun.app.App;
-import com.wencharm.fun.model.entity.Gank;
-import com.wencharm.fun.model.network.GankService;
+import com.wencharm.fun.data.entity.Gank;
+import com.wencharm.fun.data.network.GankService;
 
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;

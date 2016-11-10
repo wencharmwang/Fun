@@ -2,7 +2,7 @@ package com.wencharm.fun.app;
 
 import android.app.Application;
 
-import com.wencharm.fun.api.Domain;
+import com.wencharm.fun.domain.Domain;
 
 /**
  * Created by Wencharm on 18/10/2016.
