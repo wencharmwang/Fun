@@ -2,9 +2,9 @@ package com.wencharm.fun.presentation.home;
 
 import com.wencharm.fun.app.App;
 
-import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by Wencharm on 19/10/2016.
@@ -13,7 +13,7 @@ import rx.schedulers.Schedulers;
 public class GanksPresenter implements GanksContract.IPresenter {
 
 	GanksContract.IView view;
-	Subscription subscription;
+	Disposable subscription;
 
 	public GanksPresenter(GanksFragment view) {
 		this.view = view;
@@ -21,8 +21,8 @@ public class GanksPresenter implements GanksContract.IPresenter {
 
 	@Override
 	public void loadGanks() {
-		if (subscription != null && !subscription.isUnsubscribed()) subscription.unsubscribe();
-		subscription = App.domain.gankApi.ganks().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(ganks -> {
+		if (subscription != null && !subscription.isDisposed()) subscription.dispose();
+		subscription = App.domain.gankActor.ganks().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(ganks -> {
 			view.showGanks(ganks.results);
 		});
 	}
@@ -34,6 +34,6 @@ public class GanksPresenter implements GanksContract.IPresenter {
 
 	@Override
 	public void unsubscribe() {
-		subscription.unsubscribe();
+		subscription.dispose();
 	}
 }

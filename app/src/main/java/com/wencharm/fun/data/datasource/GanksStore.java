@@ -5,11 +5,12 @@ import com.wencharm.fun.data.entity.Gank;
 import com.wencharm.fun.data.network.GankService;
 import com.wencharm.fun.domain.GankActor;
 
+import io.reactivex.Observable;
+import io.reactivex.schedulers.Schedulers;
+import io.reactivex.subjects.BehaviorSubject;
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.jackson.JacksonConverterFactory;
-import rx.Observable;
-import rx.subjects.BehaviorSubject;
 
 /**
  * Created by Wencharm on 10/11/2016.
@@ -31,12 +32,12 @@ public class GanksStore implements GankActor.GanksRespository {
 				Retrofit retrofit = new Retrofit.Builder()
 						.client(App.network.httpClient)
 						.baseUrl(GankService.BASE_URL)
-						.addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+						.addCallAdapterFactory(RxJava2CallAdapterFactory.create())
 						.addConverterFactory(JacksonConverterFactory.create())
 						.build();
 				gankService = retrofit.create(GankService.class);
 			}
-			gankService.getGanks("福利", 10, 1).doOnNext(l -> App.cache.put(KEY, l)).subscribe(ganks -> {
+			gankService.getGanks("福利", 10, 1).doOnNext(l -> App.cache.put(KEY, l)).subscribeOn(Schedulers.io()).subscribe(ganks -> {
 				subject.onNext(ganks);
 			});
 		}

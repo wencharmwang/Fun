@@ -2,9 +2,9 @@ package com.wencharm.fun.data.network;
 
 import com.wencharm.fun.data.entity.Gank;
 
+import io.reactivex.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
-import rx.Observable;
 
 /**
  * Created by Wencharm on 19/10/2016.

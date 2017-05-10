@@ -2,7 +2,8 @@ package com.wencharm.fun.domain;
 
 import com.wencharm.fun.data.entity.Gank;
 
-import rx.Observable;
+import io.reactivex.Observable;
+
 
 /**
  * Created by Wencharm on 18/10/2016.
