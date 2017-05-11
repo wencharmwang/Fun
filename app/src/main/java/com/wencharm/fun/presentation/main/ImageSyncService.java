@@ -30,7 +30,7 @@ import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 
-import io.reactivex.Observable;
+import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
@@ -88,7 +88,7 @@ public class ImageSyncService extends IntentService {
 	}
 
 	public static void addTag(ArrayList<String> images) {
-		Observable.create(e -> {
+		Single.create(e -> {
 			try {
 				BitmapFactory.Options options = new BitmapFactory.Options();
 				options.inMutable = true;
@@ -135,6 +135,10 @@ public class ImageSyncService extends IntentService {
 					ExifInterface newExif = new ExifInterface(imageFile.getPath());
 					newExif.setAttribute(ExifInterface.TAG_ORIENTATION, exif.getAttribute(ExifInterface.TAG_ORIENTATION));
 					newExif.saveAttributes();
+					// save image to Media Provider
+					Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+					mediaScanIntent.setData(Uri.fromFile(imageFile));
+					App.app.sendBroadcast(mediaScanIntent);
 				}
 			} catch (Exception ex) {
 				ex.printStackTrace();
