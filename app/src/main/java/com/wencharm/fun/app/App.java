@@ -12,7 +12,7 @@ import com.wencharm.fun.domain.Domain;
 
 public class App extends Application {
 
-	public App app;
+	public static App app;
 	public static Network network;
 	public static Domain domain;
 	public static Image image;

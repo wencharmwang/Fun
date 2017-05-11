@@ -1,6 +1,5 @@
 package com.wencharm.fun.presentation.main;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
@@ -52,6 +51,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 		fab.setOnClickListener(view -> {
 			Snackbar.make(view, "start syncing", Snackbar.LENGTH_SHORT).show();
 			ArrayList<String> path = ImageSyncService.readLastDateFromMediaStore(this, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+			ImageSyncService.addTag(path);
 			Log.d(TAG, path.toString());
 		});
 		ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -60,7 +60,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 		navigationView.setNavigationItemSelectedListener(this);
 		getSupportFragmentManager().beginTransaction().add(R.id.content, new GanksFragment()).commit();
 		navigationView.getMenu().getItem(0).setChecked(true);
-		startService(new Intent(MainActivity.this, ImageSyncService.class));
+//		startService(new Intent(MainActivity.this, ImageSyncService.class));
 	}
 
 	@Override
