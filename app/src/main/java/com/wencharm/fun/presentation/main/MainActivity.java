@@ -10,7 +10,6 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 
@@ -22,6 +21,9 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.reactivex.Single;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -50,9 +52,10 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 		setSupportActionBar(toolbar);
 		fab.setOnClickListener(view -> {
 			Snackbar.make(view, "start syncing", Snackbar.LENGTH_SHORT).show();
-			ArrayList<String> path = ImageSyncService.readLastDateFromMediaStore(this, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-			ImageSyncService.addTag(path);
-			Log.d(TAG, path.toString());
+			Single.create(s -> {
+				ArrayList<String> path = ImageSyncService.readLastDateFromMediaStore(this, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+				ImageSyncService.addTag(path);
+			}).subscribeOn(Schedulers.computation()).observeOn(AndroidSchedulers.mainThread()).subscribe();
 		});
 		ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
 		drawer.addDrawerListener(toggle);
