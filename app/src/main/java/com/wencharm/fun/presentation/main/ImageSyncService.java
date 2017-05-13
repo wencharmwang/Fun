@@ -43,7 +43,8 @@ public class ImageSyncService extends Service {
 
 	public static final String TAG = "ImageSyncService";
 	public static final String ALBUM_NAME = "Wencharm";
-	public static final String TEXT = "Hey pretty ! it's me.";
+	public static final String TAG_ON_IMAGE = "TAG_ON_IMAGE";
+	public static final String TEXT = "Wencharm家的璐璐怎么辣么美~";
 	public static final String SYNCED_UNTIL_DATE = "synced_until_date";
 	public static int MAX_SYNC = 100;
 
@@ -113,6 +114,7 @@ public class ImageSyncService extends Service {
 	}
 
 	public static void addTag(ArrayList<String> images) {
+		String text = App.sp.getString(TAG_ON_IMAGE, TEXT);
 		if (images != null && images.size() > 0) {
 			for (int i = 0; i < images.size(); i++) {
 				try {
@@ -137,10 +139,10 @@ public class ImageSyncService extends Service {
 					paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_OVER));
 					// draw text to the Canvas center
 					Rect bounds = new Rect();
-					paint.getTextBounds(TEXT, 0, TEXT.length(), bounds);
+					paint.getTextBounds(text, 0, text.length(), bounds);
 					int x = (bitmap.getWidth() - bounds.width()) / 2;
-					int y = bounds.height() * 2;
-					canvas.drawText(TEXT, x, y, paint);
+					int y = bounds.height();
+					canvas.drawText(text, x, y, paint);
 					// save image;
 					String state = Environment.getExternalStorageState();
 					if (Environment.MEDIA_MOUNTED.equals(state)) {

@@ -9,11 +9,15 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 
 import com.wencharm.fun.R;
+import com.wencharm.fun.app.App;
 import com.wencharm.fun.presentation.BaseActivity;
 import com.wencharm.fun.presentation.home.GanksFragment;
 
@@ -56,6 +60,15 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 				ArrayList<String> path = ImageSyncService.readLastDateFromMediaStore(this, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 				ImageSyncService.addTag(path);
 			}).subscribeOn(Schedulers.computation()).observeOn(AndroidSchedulers.mainThread()).subscribe();
+		});
+		fab.setOnLongClickListener(v -> {
+			ViewGroup view = (ViewGroup) inflater().inflate(R.layout.home_edit_text, null);
+			EditText editText = (EditText) view.findViewById(R.id.text);
+			editText.setText(App.sp.getString(ImageSyncService.TAG_ON_IMAGE, ImageSyncService.TEXT));
+			AlertDialog dialog = new AlertDialog.Builder(this).setView(view).setPositiveButton("OK", (d, w) -> {
+				App.sp.edit().putString(ImageSyncService.TAG_ON_IMAGE, editText.getText().toString()).apply();
+			}).show();
+			return true;
 		});
 		ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
 		drawer.addDrawerListener(toggle);
