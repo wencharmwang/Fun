@@ -11,9 +11,6 @@ import com.wencharm.fun.R;
 import com.wencharm.fun.app.App;
 import com.wencharm.fun.presentation.BaseFragment;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
 
 /**
  * Created by Wencharm on 06/11/2016.
@@ -23,11 +20,8 @@ public class ProfileFragment extends BaseFragment {
 
 	public static final String URL = "image_url";
 
-	@BindView(R.id.image)
 	SimpleDraweeView image;
-	@BindView(R.id.name)
 	TextView name;
-	@BindView(R.id.status)
 	TextView status;
 
 	private String url;
@@ -41,7 +35,10 @@ public class ProfileFragment extends BaseFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		super.onCreateView(inflater, container, savedInstanceState);
 		View view = inflater.inflate(R.layout.profile, container, false);
-		ButterKnife.bind(this, view);
+		ViewGroup parent = (ViewGroup) view;
+		image = (SimpleDraweeView) parent.findViewById(R.id.image);
+		name = (TextView) parent.findViewById(R.id.name);
+		status = (TextView) parent.findViewById(R.id.status);
 //		image.setImageDrawable(activity().getDrawable(R.drawable.ic_image_holder));
 		App.image.load(image, url);
 		name.setText("Charming");

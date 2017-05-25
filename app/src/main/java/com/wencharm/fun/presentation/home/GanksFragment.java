@@ -23,9 +23,6 @@ import com.wencharm.fun.presentation.profile.ProfileTransiton;
 
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
 /**
  * Created by Wencharm on 19/10/2016.
  */
@@ -34,7 +31,6 @@ public class GanksFragment extends BaseFragment implements GanksContract.IView {
 
 	public static final String TAG = "GanksFragment";
 
-	@BindView(R.id.gank_list)
 	RecyclerView gank_list;
 
 	private GanksContract.IPresenter presenter;
@@ -51,7 +47,8 @@ public class GanksFragment extends BaseFragment implements GanksContract.IView {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		super.onCreateView(inflater, container, savedInstanceState);
 		View view = inflater.inflate(R.layout.home_ganks, container, false);
-		ButterKnife.bind(this, view);
+		ViewGroup parent = (ViewGroup) view;
+		gank_list = (RecyclerView) parent.findViewById(R.id.gank_list);
 		gank_list.setHasFixedSize(true);
 		layoutManager = new LinearLayoutManager(activity());
 		gank_list.setLayoutManager(layoutManager);
@@ -96,16 +93,16 @@ public class GanksFragment extends BaseFragment implements GanksContract.IView {
 	}
 
 	static class GankHolder extends RecyclerView.ViewHolder {
-		@BindView(R.id.item)
 		CardView card;
-		@BindView(R.id.image)
 		SimpleDraweeView image;
-		@BindView(R.id.provider)
 		TextView provider;
 
 		GankHolder(View itemView) {
 			super(itemView);
-			ButterKnife.bind(this, itemView);
+			ViewGroup parent = (ViewGroup) itemView;
+			card = (CardView) parent.findViewById(R.id.item);
+			image = (SimpleDraweeView) parent.findViewById(R.id.image);
+			provider = (TextView) parent.findViewById(R.id.provider);
 		}
 
 		void bind(BaseActivity activity, Gank.GankInfo gankInfo, int position) {

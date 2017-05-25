@@ -22,9 +22,6 @@ import com.wencharm.fun.presentation.BaseActivity;
 import com.wencharm.fun.presentation.home.GanksFragment;
 
 import java.util.ArrayList;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -33,26 +30,21 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
 	public static final String TAG = "MainActivity";
 
-	@BindView(R.id.toolbar)
 	Toolbar toolbar;
-
-	@BindView(R.id.drawer_layout)
 	DrawerLayout drawer;
-
-	@BindView(R.id.nav_view)
 	NavigationView navigationView;
-
-	@BindView(R.id.fab)
 	FloatingActionButton fab;
-
-	@BindView(R.id.content)
 	FrameLayout content;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main_activity);
-		ButterKnife.bind(this);
+		toolbar = (Toolbar) findViewById(R.id.toolbar);
+		drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+		navigationView = (NavigationView) findViewById(R.id.nav_view);
+		fab = (FloatingActionButton) findViewById(R.id.fab);
+		content = (FrameLayout) findViewById(R.id.content);
 		setSupportActionBar(toolbar);
 		fab.setOnClickListener(view -> {
 			Snackbar.make(view, "start syncing", Snackbar.LENGTH_SHORT).show();
