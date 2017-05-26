@@ -22,6 +22,7 @@ import com.wencharm.fun.presentation.BaseActivity;
 import com.wencharm.fun.presentation.home.GanksFragment;
 
 import java.util.ArrayList;
+
 import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
